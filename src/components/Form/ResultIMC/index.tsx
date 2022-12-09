@@ -8,8 +8,8 @@ interface Props {
 export default function ResultIMC({ imc, messageResult }: Props) {
   return (
     <View>
-      <Text>{imc}</Text>
       <Text>{messageResult}</Text>
+      <Text>{imc}</Text>
     </View>
   );
 }
