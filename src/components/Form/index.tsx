@@ -67,12 +67,7 @@ export default function Form() {
           onChangeText={(value) => setWeight(value)}
           value={weight.toString()}
         />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            validationImc();
-          }}
-        >
+        <TouchableOpacity style={styles.button} onPress={validationImc}>
           <Text style={styles.textButton}>{textButton}</Text>
         </TouchableOpacity>
       </View>
