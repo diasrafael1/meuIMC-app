@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {
+  Keyboard,
+  Pressable,
   Text,
   TextInput,
   View,
@@ -31,6 +33,7 @@ export default function Form() {
       setMessageImc("Seu IMC é igual:");
       setTextButton("Calcular Novamente");
       setErrorMessage("");
+      Keyboard.dismiss();
       return;
     }
     verificationImc();
@@ -47,7 +50,7 @@ export default function Form() {
   }
 
   return (
-    <View style={styles.formContext}>
+    <Pressable onPress={() => Keyboard.dismiss()} style={styles.formContext}>
       <View style={styles.form}>
         <Text style={styles.formLabel}>Altura</Text>
         <Text style={styles.errorMessage}>{errorMessage}</Text>
@@ -72,6 +75,6 @@ export default function Form() {
         </TouchableOpacity>
       </View>
       <ResultIMC imc={imc} messageResult={messageImc} />
-    </View>
+    </Pressable>
   );
 }
