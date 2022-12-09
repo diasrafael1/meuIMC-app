@@ -9,6 +9,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
+  shareButtonContainer: {
+    width: "100%",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  shareButton: {
+    backgroundColor: "#1877f2",
+    borderRadius: 50,
+    paddingBottom: 5,
+    paddingTop: 5,
+  },
+  shareText: {
+    color: "#ffff",
+    fontWeight: "bold",
+    paddingHorizontal: 30,
+  },
   information: {
     fontSize: 18,
     color: "#003beb",
