@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Text, TextInput, View, TouchableOpacity } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  Vibration,
+  TouchableOpacity,
+} from "react-native";
 import ResultIMC from "./ResultIMC";
 import styles from "./styles";
 
@@ -36,6 +42,7 @@ export default function Form() {
   function verificationImc() {
     if (!imc) {
       setErrorMessage("Campo obrigatório!");
+      Vibration.vibrate();
     }
   }
 
