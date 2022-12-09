@@ -22,6 +22,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 20,
   },
+  errorMessage: {
+    fontSize: 12,
+    color: "red",
+    fontWeight: "bold",
+    paddingLeft: 20,
+  },
   formInput: {
     width: "90%",
     borderRadius: 50,

@@ -6,9 +6,10 @@ import styles from "./styles";
 export default function Form() {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [message, setMessage] = useState("Preencha o peso e altura.");
+  const [messageImc, setMessageImc] = useState("Preencha o peso e altura.");
   const [textButton, setTextButton] = useState("Calcular IMC");
   const [imc, setImc] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function imcCalculator() {
     const formatHeight = Number(height.replace(",", "."));
@@ -21,19 +22,28 @@ export default function Form() {
       imcCalculator();
       setHeight("");
       setWeight("");
-      setMessage("Seu IMC é igual:");
+      setMessageImc("Seu IMC é igual:");
       setTextButton("Calcular Novamente");
+      setErrorMessage("");
       return;
     }
+    verificationImc();
     setImc("");
     setTextButton("Calcular seu IMC");
-    setMessage("Preencha o peso e altura.");
+    setMessageImc("Preencha o peso e altura.");
+  }
+
+  function verificationImc() {
+    if (!imc) {
+      setErrorMessage("Campo obrigatório!");
+    }
   }
 
   return (
     <View style={styles.formContext}>
       <View style={styles.form}>
         <Text style={styles.formLabel}>Altura</Text>
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
         <TextInput
           style={styles.formInput}
           placeholder="Ex. 1.75"
@@ -42,6 +52,7 @@ export default function Form() {
           value={height.toString()}
         />
         <Text style={styles.formLabel}>Peso</Text>
+        <Text style={styles.errorMessage}>{errorMessage}</Text>
         <TextInput
           style={styles.formInput}
           placeholder="Ex. 80"
@@ -58,7 +69,7 @@ export default function Form() {
           <Text style={styles.textButton}>{textButton}</Text>
         </TouchableOpacity>
       </View>
-      <ResultIMC imc={imc} messageResult={message} />
+      <ResultIMC imc={imc} messageResult={messageImc} />
     </View>
   );
 }
