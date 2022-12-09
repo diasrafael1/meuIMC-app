@@ -12,7 +12,8 @@ export default function Form() {
 
   function imcCalculator() {
     const formatHeight = Number(height.replace(",", "."));
-    return setImc((Number(weight) / (formatHeight * formatHeight)).toFixed(2));
+    const formatWeight = Number(weight.replace(",", "."));
+    return setImc((formatWeight / (formatHeight * formatHeight)).toFixed(2));
   }
 
   function validationImc() {
