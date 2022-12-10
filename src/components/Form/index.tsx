@@ -20,7 +20,6 @@ interface ImcList {
 export default function Form() {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [textButton, setTextButton] = useState("Calcular IMC");
   const [imc, setImc] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [imcList, setImcList] = useState<ImcList[]>([]);
@@ -38,14 +37,12 @@ export default function Form() {
       imcCalculator();
       setHeight("");
       setWeight("");
-      setTextButton("Calcular Novamente");
       setErrorMessage("");
       Keyboard.dismiss();
     } else {
       setErrorMessage("Campo obrigatório!");
       Vibration.vibrate();
       setImc("");
-      setTextButton("Calcular seu IMC");
     }
   }
 
@@ -72,14 +69,14 @@ export default function Form() {
             value={weight.toString()}
           />
           <TouchableOpacity style={styles.button} onPress={validationImc}>
-            <Text style={styles.textButton}>{textButton}</Text>
+            <Text style={styles.textButton}>Calcular IMC</Text>
           </TouchableOpacity>
         </Pressable>
       ) : (
         <View style={styles.exhibitionResultImc}>
           <ResultIMC imc={imc} />
-          <TouchableOpacity style={styles.button} onPress={validationImc}>
-            <Text style={styles.textButton}>{textButton}</Text>
+          <TouchableOpacity style={styles.button} onPress={() => setImc("")}>
+            <Text style={styles.textButton}>Calcular Novamente</Text>
           </TouchableOpacity>
         </View>
       )}
