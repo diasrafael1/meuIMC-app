@@ -36,17 +36,11 @@ export default function Form() {
       Keyboard.dismiss();
       return;
     }
-    verificationImc();
+    setErrorMessage("Campo obrigatório!");
+    Vibration.vibrate();
     setImc("");
     setTextButton("Calcular seu IMC");
     setMessageImc("Preencha o peso e altura.");
-  }
-
-  function verificationImc() {
-    if (!imc) {
-      setErrorMessage("Campo obrigatório!");
-      Vibration.vibrate();
-    }
   }
 
   return (
